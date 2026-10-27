@@ -1,5 +1,5 @@
 -- Elyah Store — estrutura e produtos demonstrativos
--- Importe este arquivo pelo phpMyAdmin. Nenhum administrador/senha é criado aqui.
+
 CREATE DATABASE IF NOT EXISTS elyah_store
     CHARACTER SET utf8mb4
     COLLATE utf8mb4_unicode_ci;
@@ -67,21 +67,21 @@ ON DUPLICATE KEY UPDATE nome = VALUES(nome), ativa = VALUES(ativa);
 
 INSERT INTO produtos (categoria_id, nome, preco, descricao, tamanhos, cores, imagem, disponivel, destaque, novidade)
 SELECT c.id, 'Vestido Azul Serena', 219.90,
-       'Um vestido leve e delicado para acompanhar momentos especiais. Peça fictícia de demonstração do catálogo.',
+       'Peça fictícia de demonstração do catálogo.',
        'PP, P, M, G', 'Azul-claro', 'imagens/produtos/vestido-azul.jpg', 1, 1, 1
 FROM categorias c WHERE c.slug = 'vestidos'
 AND NOT EXISTS (SELECT 1 FROM produtos p WHERE p.nome = 'Vestido Azul Serena');
 
 INSERT INTO produtos (categoria_id, nome, preco, descricao, tamanhos, cores, imagem, disponivel, destaque, novidade)
 SELECT c.id, 'Conjunto Areia', 289.90,
-       'Combinação elegante de blusa e calça de caimento confortável. Produto fictício para apresentação do sistema.',
+       'Produto fictício para apresentação do sistema.',
        'P, M, G', 'Areia, Off-white', 'imagens/produtos/conjunto-areia.jpg', 1, 1, 0
 FROM categorias c WHERE c.slug = 'conjuntos'
 AND NOT EXISTS (SELECT 1 FROM produtos p WHERE p.nome = 'Conjunto Areia');
 
 INSERT INTO produtos (categoria_id, nome, preco, descricao, tamanhos, cores, imagem, disponivel, destaque, novidade)
 SELECT c.id, 'Bolsa Pérola', 179.90,
-       'Bolsa clara com proposta clássica para compor diferentes produções. Produto fictício de demonstração.',
+       'Produto fictício de demonstração.',
        'Único', 'Off-white', 'imagens/produtos/bolsa-perola.jpg', 1, 0, 1
 FROM categorias c WHERE c.slug = 'bolsas'
 AND NOT EXISTS (SELECT 1 FROM produtos p WHERE p.nome = 'Bolsa Pérola');
